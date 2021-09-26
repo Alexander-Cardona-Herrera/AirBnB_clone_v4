@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-  $.getJSON('http://0.0.0.0:5001/api/v1/status/', function (data) {
+  $.getJSON('http://192.168.1.6/:5001/api/v1/status/', function (data) {
     if (data.status === 'OK') {
+      $('DIV#api_status').addClass('available');
+    } else {
       $('DIV#api_status').removeClass('available');
     }
-  }).fail(function() {
-    $('DIV#api_status').removeClass('available');
   });
 
   const amenityStorage = {};
@@ -15,7 +15,7 @@ $(document).ready(function () {
     let amenityName = $(this).attr('data-name');
 
     if (this.checked) {
-      amenityStorage[amenityId] = amenityId;
+      amenityStorage[amenityId] = amenityName;
     } else {
       delete amenityStorage[amenityId];
     }

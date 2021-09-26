@@ -6,14 +6,14 @@ $(document).ready(function () {
     let amenityName = $(this).attr('data-name');
 
     if (this.checked) {
-      amenityStorage[amenityId] = amenityId;
+      amenityStorage[amenityId] = amenityName;
     } else {
       delete amenityStorage[amenityId];
     }
 
     $('div.amenities h4').empty();
     let newText = $.map(amenityStorage, function (x) {
-      return x;
+      return x; 
     }).join(', ');
 
     $('div.amenities h4').text(newText);
