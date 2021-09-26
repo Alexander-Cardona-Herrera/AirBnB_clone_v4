@@ -27,4 +27,33 @@ $(document).ready(function () {
 
     $('div.amenities h4').text(newText);
   });
+
+  $.ajax({
+    type: 'POST',
+    url: 'http://192.168.1.6:5001/api/v1/places_search',
+    data: JSON.stringify({}),
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function (data) {
+      for (let dir of data) {
+        $('.places').append('<article>' + dir.name + '</article>');
+      };
+    }
+  });
+
+  $('type=button').click(function () {
+    $.ajax({
+      type: 'POST',
+      url: 'http://192.168.1.6:5001/api/v1/places_search',
+      data: JSON.stringify({}),
+      dataType: 'json',
+      contentType: 'application/json',
+      success: function (data) {
+        for (let dir of data) {
+          $('.places').append('<article>' + dir.name + '</article>');
+        };
+      }
+    });
+  });
+
 });
